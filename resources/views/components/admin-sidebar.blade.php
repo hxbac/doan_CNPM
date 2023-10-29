@@ -11,8 +11,8 @@
     <div class="data-scrollbar" data-scroll="1">
         <nav class="iq-sidebar-menu">
             <ul id="iq-sidebar-toggle" class="iq-menu">
-                <li class="active">
-                    <a href="" class="svg-icon">
+                <li class="">
+                    <a href="{{ route('admin.home.index')}}" class="svg-icon">
                         <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -20,6 +20,17 @@
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
                         <span class="ml-4">Dashboards</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{ route('admin.menu.index')}}" class="svg-icon">
+                        <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span class="ml-4">Quản lý menu</span>
                     </a>
                 </li>
             </ul>
