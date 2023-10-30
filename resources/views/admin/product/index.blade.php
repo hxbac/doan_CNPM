@@ -37,7 +37,9 @@
                                                 <td class="sorting_1">{{ $itemProduct->id }}</td>
                                                 <td>{{ $itemProduct->id_category }}</td>
                                                 <td>{{ $itemProduct->name }}</td>
-                                                <td>{{ $itemProduct->image }}</td>
+                                                <td>
+                                                    <img height="100" src="{{ $itemProduct->image }}" alt="">
+                                                </td>
                                                 <td>{{ $itemProduct->price }}</td>
                                                 <td>
                                                     <div class="d-flex">

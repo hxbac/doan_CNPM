@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{route('admin.product.update')}}">
+                        <form method="post" action="{{route('admin.product.update')}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $itemProduct->id }}" name="id">
                             <div class="form-group">
@@ -22,8 +22,15 @@
                                 <input type="text" class="form-control" value="{{ $itemProduct->name }}" name="name">
                             </div>
                             <div class="form-group">
-                                <label for="pwd">Hình ảnh</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->image }}" name="image">
+                                <label for="validationDefault01">Hình ảnh</label>
+                                <div class="custom-file ">
+                                    <input type="file" class="custom-file-input" id="customFile" name="image">
+                                    <label class="custom-file-label" for="customFile"></label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" name="changeImage" id="change-image">
+                                    <label class="custom-control-label" for="change-image">Thay đổi hình ảnh</label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Giá</label>
