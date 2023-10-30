@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Webkit | Responsive Bootstrap 4 Admin Dashboard Template</title>
+    <title>Trang quản trị</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.ico') }}" />

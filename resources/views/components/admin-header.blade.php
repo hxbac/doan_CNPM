@@ -4,12 +4,11 @@
             <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                 <i class="ri-menu-line wrapper-menu"></i>
                 <a href="{{ asset('') }}admin/backend/index.html" class="header-logo">
-                    <h4 class="logo-title text-uppercase">Webkit</h4>
+                    <h4 class="logo-title text-uppercase">Multi Shop</h4>
 
                 </a>
             </div>
             <div class="navbar-breadcrumb">
-                <h5>Dashboard</h5>
             </div>
             <div class="d-flex align-items-center">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -24,7 +23,7 @@
                                 <form action="#" class="searchbox">
                                     <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                                     <input type="text" class="text search-input"
-                                        placeholder="Search here...">
+                                        placeholder="Tìm kiếm...">
                                 </form>
                             </div>
                         </li>
