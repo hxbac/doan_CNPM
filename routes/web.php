@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Client\HomeController;
@@ -29,6 +30,7 @@ Route::get('/logout', function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('/index', [AdminHomeController::class, 'index'])->name('admin.home.index');
+
     Route::prefix('/menu')->group(function () {
         Route::get('/index', [MenuController::class, 'index'])->name('admin.menu.index');
         Route::get('/create', [MenuController::class, 'create'])->name('admin.menu.create');
@@ -52,6 +54,15 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
         Route::post('/update', [CategoryController::class, 'update'])->name('admin.category.update');
         Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
+    });
+
+    Route::prefix('/user')->group(function () {
+        Route::get('/index', [AdminUserController::class, 'index'])->name('admin.user.index');
+        Route::get('/create', [AdminUserController::class, 'create'])->name('admin.user.create');
+        Route::post('/store', [AdminUserController::class, 'store'])->name('admin.user.store');
+        Route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('admin.user.edit');
+        Route::post('/update', [AdminUserController::class, 'update'])->name('admin.user.update');
+        Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.user.delete');
     });
 });
 
