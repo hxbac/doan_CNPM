@@ -34,6 +34,17 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ], [
+            'name.required' => 'Tên người dùng là bắt buộc',
+            'name.string' => 'Kiểu dữ liệu không hợp lệ',
+            'name.max' => 'Tối đa 255 ký tự',
+            'email.required' => 'Email là bắt buộc',
+            'email.string' => 'Kiểu dữ liệu không hợp lệ',
+            'email.email' => 'Sai định dạng email',
+            'email.max' => 'Tối đa 255 ký tự',
+            'email.unique' => 'Email đã được sử dụng',
+            'password.required' => 'Mật khẩu là bắt buộc',
+            'password.confirmed' => 'Mật khẩu không trùng khớp',
         ]);
 
         $user = User::create([
@@ -46,6 +57,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('home.index');
     }
 }

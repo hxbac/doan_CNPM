@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/logout', function () {
     Auth::logout();
@@ -44,6 +44,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
         Route::post('/update', [ProductController::class, 'update'])->name('admin.product.update');
         Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
+    });
+    Route::prefix('/category')->group(function () {
+        Route::get('/index', [CategoryController::class, 'index'])->name('admin.category.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('admin.category.create');
+        Route::post('/store', [CategoryController::class, 'store'])->name('admin.category.store');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+        Route::post('/update', [CategoryController::class, 'update'])->name('admin.category.update');
+        Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
     });
 });
 
