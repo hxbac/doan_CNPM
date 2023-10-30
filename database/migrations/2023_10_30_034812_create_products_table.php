@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('id_category')->references('id')->on('categories');
             $table->string('name');
             $table->string('image');
-            $table->integer('price');
+            $table->unsignedBigInteger('price');
             $table->string('describe');
             $table->timestamps();
         });
