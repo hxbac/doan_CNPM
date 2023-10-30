@@ -26,10 +26,11 @@ class ProductController extends Controller
 
     public function store (Request $request)
     {
+        $imgPath = $this->uploadFile($request->file('image'), 'product');
         Product::create([
             "id_category" => $request->id_category,
             "name" => $request->name,
-            "image" => $request->image,
+            "image" => $imgPath,
             "price" => $request->price,
             "describe" => $request->describe,
             "screen" => $request->screen,
@@ -53,7 +54,10 @@ class ProductController extends Controller
     {
         $product = Product::find($request->id);
         $product->name = $request->name;
-        $product->image = $request->image;
+        if ($request->changeImage) {
+            $imgPath = $this->uploadFile($request->file('image'), 'product');
+            $product->image = $imgPath;
+        }
         $product->price = $request->price;
         $product->describe = $request->describe;
         $product->screen = $request->screen;
