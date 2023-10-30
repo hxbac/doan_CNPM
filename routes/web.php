@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,14 @@ Route::prefix('admin')->group(function () {
         Route::post('/update', [MenuController::class, 'update'])->name('admin.menu.update');
         Route::get('/delete/{id}', [MenuController::class, 'delete'])->name('admin.menu.delete');
     });
-
+    Route::prefix('/product')->group(function () {
+        Route::get('/index', [ProductController::class,'index'])->name('admin.product.index');
+        Route::get('/create', [ProductController::class,'create'])->name('admin.product.create');
+        Route::post('/store', [ProductController::class, 'store'])->name('admin.product.store');
+        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
+        Route::post('/update', [ProductController::class, 'update'])->name('admin.product.update');
+        Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
+    });
     Route::prefix('/category')->group(function () {
         Route::get('/index', [CategoryController::class, 'index'])->name('admin.category.index');
         Route::get('/create', [CategoryController::class, 'create'])->name('admin.category.create');
