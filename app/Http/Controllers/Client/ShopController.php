@@ -13,6 +13,7 @@ class ShopController extends Controller
             'ram' => $request->input('ram'),
             'memory' => $request->input('memory'),
             'price' => $request->input('price'),
+            'search' => $request->input('search'),
         ];
 
         $products = Product::query();
@@ -21,6 +22,28 @@ class ShopController extends Controller
         }
         if ($query['memory']) {
             $products = $products->where('memory', $query['memory']);
+        }
+        if ($query['price']) {
+            switch ($query['price']) {
+                case 1:
+                    $products = $products->where('price', '<', 5000000);
+                    break;
+                case 2:
+                    $products = $products->where('price', '>=', 5000000)->where('price', '<=', 10000000);
+                    break;
+                case 3:
+                    $products = $products->where('price', '>=', 10000000)->where('price', '<=', 15000000);
+                    break;
+                case 4:
+                    $products = $products->where('price', '>=', 15000000)->where('price', '<=', 20000000);
+                    break;
+                case 5:
+                    $products = $products->where('price', '>=', 20000000);
+                    break;
+            }
+        }
+        if ($query['search']) {
+            $products = $products->where('name', 'LIKE', '%'. $query['search'] .'%');
         }
 
         return view('client.shop.index', [

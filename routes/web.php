@@ -28,7 +28,7 @@ Route::get('/logout', function () {
     return redirect('/login');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth.admin')->group(function () {
     Route::get('/index', [AdminHomeController::class, 'index'])->name('admin.home.index');
 
     Route::prefix('/menu')->group(function () {

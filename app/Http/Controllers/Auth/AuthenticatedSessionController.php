@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -29,7 +30,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if (Auth::user()->role === UserRole::ADMIN) {
+            return redirect()->route('admin.home.index');
+        } else {
+            return redirect()->route('home.index');
+        }
     }
 
     /**
@@ -43,6 +48,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        if (Auth::user()->role === UserRole::ADMIN) {
+            return redirect()->route('admin.home.index');
+        } else {
+            return redirect()->route('home.index');
+        }
     }
 }
