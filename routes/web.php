@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ShopController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/logout', function () {
     Auth::logout();
@@ -64,6 +64,12 @@ Route::prefix('admin')->group(function () {
         Route::post('/update', [AdminUserController::class, 'update'])->name('admin.user.update');
         Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.user.delete');
     });
+});
+
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::prefix('/shop')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+    Route::get('/{slug}/{id}', [ShopController::class, 'detail'])->name('shop.detail');
 });
 
 

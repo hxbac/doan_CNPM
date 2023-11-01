@@ -18,13 +18,15 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('client/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('client/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('client/css/style.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>

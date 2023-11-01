@@ -37,7 +37,9 @@ class ProductController extends Controller
             "cpu" => $request->cpu,
             "card" => $request->card,
             "battery" => $request->battery,
-            "mass" => $request->mass
+            "mass" => $request->mass,
+            "ram" => $request->ram,
+            "memory" => $request->memory,
         ]);
         return redirect()->route('admin.product.index');
     }

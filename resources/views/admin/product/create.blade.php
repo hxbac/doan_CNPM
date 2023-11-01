@@ -52,6 +52,28 @@
                                     <input type="text" class="form-control" id="validationDefault01" name="cpu" >
                                 </div>
                                 <div class="col-md-12 mb-3">
+                                    <label for="validationDefault01">Ram</label>
+                                    <select class="form-control mb-3" name="ram">
+                                        <option value="4" checked>4 GB</option>
+                                        <option value="8" >8 GB</option>
+                                        <option value="16" >16 GB</option>
+                                        <option value="32" >32 GB</option>
+                                        <option value="64" >64 GB</option>
+                                        <option value="128" >128 GB</option>
+                                        <option value="256" >256 GB</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="validationDefault01">Bộ nhớ</label>
+                                    <select class="form-control mb-3" name="memory">
+                                        <option value="128" checked>128 GB</option>
+                                        <option value="256" >256 GB</option>
+                                        <option value="512" >512 GB</option>
+                                        <option value="1024" >1024 GB</option>
+                                        <option value="2048" >2056 GB</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Card</label>
                                     <input type="text" class="form-control" id="validationDefault01" name="card" >
                                 </div>
