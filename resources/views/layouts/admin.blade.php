@@ -54,25 +54,10 @@
     <!-- Chart Custom JavaScript -->
     <script async src="{{ asset('admin/assets/js/slider.js') }}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.5.0/toastify.js" integrity="sha512-0M1OKuNQKhBhA/vqxH7OaS1LZlDwSrSbL3QzcmrlNbkWV0U4ewn8SWfVuRS5nLGV9IXsuNnkdqzyXOYXc0Eo9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <!-- app JavaScript -->
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 
     <script src="{{ asset('admin/assets/vendor/moment.min.js') }}"></script>
-
-    <script>
-        toast('🦄 Wow so easy!', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            });
-    </script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <div class="iq-sidebar  sidebar-default ">
     <div class="iq-sidebar-logo d-flex align-items-center">
-        <a href="" class="header-logo">
-            <img src="{{ asset('admin/assets/images/logo.svg') }}" alt="logo">
+        <a href="{{ route('home.index') }}" class="header-logo">
+            {{-- <img src="{{ asset('admin/assets/images/logo.svg') }}" alt="logo"> --}}
             <h3 class="logo-title light-logo">Multi Shop</h3>
         </a>
         <div class="iq-menu-bt-sidebar ml-0">
