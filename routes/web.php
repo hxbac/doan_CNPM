@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ShopController;
 use App\Http\Controllers\ProfileController;
@@ -70,6 +71,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::prefix('/shop')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shop.index');
     Route::get('/{slug}/{id}', [ShopController::class, 'detail'])->name('shop.detail');
+});
+
+Route::prefix('/cart')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/add', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/remove/{productID}', [CartController::class, 'remove'])->name('cart.remove');
 });
 
 

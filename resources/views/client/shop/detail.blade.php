@@ -84,23 +84,27 @@
                             {{ $product->card ?? '' }}
                         </div>
                     </div>
-                    <div class="d-flex align-items-center mb-4 pt-2">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-minus">
-                                    <i class="fa fa-minus"></i>
-                                </button>
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        <div class="d-flex align-items-center mb-4 pt-2">
+                            @csrf
+                            <input type="hidden" name="productID" value="{{ $product->id }}">
+                            <div class="input-group quantity mr-3" style="width: 130px;">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary btn-minus" type="button">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control bg-secondary border-0 text-center" name="quantity" value="1">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary btn-plus" type="button">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-plus">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
+                            <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                                Cart</button>
                         </div>
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                            Cart</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -216,4 +220,10 @@
 
 
     <x-product-related :currID="$product->id"/>
+
+    <script>
+        function addToCart() {
+
+        }
+    </script>
 @endsection
