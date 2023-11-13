@@ -14,7 +14,7 @@
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
-                                    <label for="validationDefault01">Id danh mục</label>
+                                    <label for="validationDefault01">Danh mục</label>
                                     <select class="form-control mb-3" name="id_category">
                                         <option selected="">Chọn danh mục</option>
                                         @foreach ($listCategory as $itemCategory)

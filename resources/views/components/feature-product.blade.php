@@ -13,13 +13,13 @@
                             ]) }}"><i class="fa fa-search"></i></a>
                         </div>
                     </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="{{ route('shop.detail', [
+                    <div class="text-center py-4 d-flex flex-column">
+                        <a class="h6 text-decoration-none text-truncate mx-auto" href="{{ route('shop.detail', [
                             'slug' => $product->getSlug(),
                             'id' => $product->id
-                        ]) }}">{{ $product->name }}</a>
+                        ]) }}" style="width: 80%; display: block;">{{ $product->name }}</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>{{ number_format($product->price) }}</h5>
+                            <h5>{{ number_format($product->price) }} VND</h5>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>

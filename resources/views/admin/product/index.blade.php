@@ -20,7 +20,7 @@
                                                 colspan="1" aria-sort="ascending"
                                                 style="width: 158.094px;">Id</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 247.594px;">Id danh mục</th>
+                                                colspan="1" style="width: 247.594px;">Danh mục</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
                                                 colspan="1" style="width: 247.594px;">Tên sản phẩm</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
@@ -35,7 +35,7 @@
                                         @foreach ($listProduct as $itemProduct )
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ $itemProduct->id }}</td>
-                                                <td>{{ $itemProduct->id_category }}</td>
+                                                <td>{{ $itemProduct->category_name }}</td>
                                                 <td>{{ $itemProduct->name }}</td>
                                                 <td>
                                                     <img height="100" src="{{ $itemProduct->image }}" alt="">

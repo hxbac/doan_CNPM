@@ -14,8 +14,15 @@
                             @csrf
                             <input type="hidden" value="{{ $itemProduct->id }}" name="id">
                             <div class="form-group">
-                                <label for="email">Id danh mục</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->id_category }}" name="id_category">
+                                <label for="email">Danh mục</label>
+                                <select class="form-control mb-3" name="id_category">
+                                    <option selected="">Chọn danh mục</option>
+                                    @foreach ($listCategory as $itemCategory)
+                                        <option value="{{ $itemCategory->id }}" {{ $itemProduct->id_category == $itemCategory->id ? 'selected' : '' }}>
+                                            {{ $itemCategory->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="email">Tên sản phẩm</label>

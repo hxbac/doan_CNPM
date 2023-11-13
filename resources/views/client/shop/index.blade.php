@@ -114,7 +114,7 @@
             <div class="col-lg-9 col-md-8">
                 <div class="row pb-3">
 
-                    @foreach ($products as $product)
+                    @forelse ($products as $product)
                         <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                             <div class="product-item bg-light mb-4">
                                 <div class="product-img position-relative overflow-hidden">
@@ -127,11 +127,11 @@
                                                 class="fa fa-search"></i></a>
                                     </div>
                                 </div>
-                                <div class="text-center py-4">
-                                    <a class="h6 text-decoration-none text-truncate" href="{{ route('shop.detail', [
+                                <div class="text-center py-4 d-flex flex-column">
+                                    <a class="h6 text-decoration-none text-truncate mx-auto" href="{{ route('shop.detail', [
                                         'slug' => $product->getSlug(),
                                         'id' => $product->id
-                                    ]) }}">{{ $product->name }}</a>
+                                    ]) }}"  style="width: 80%; display: block;">{{ $product->name }}</a>
                                     <div class="d-flex align-items-center justify-content-center mt-2">
                                         <h5>{{ number_format($product->price) }} VND</h5>
                                     </div>
@@ -146,7 +146,11 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-12">
+                            <h4 class="text-center">Không có sản phẩm</h4>
+                        </div>
+                    @endforelse
 
                     <div class="col-12 d-flex justify-content-center align-items-center">
                         {{ $products->links() }}

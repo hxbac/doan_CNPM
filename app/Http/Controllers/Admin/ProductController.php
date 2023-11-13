@@ -11,7 +11,9 @@ class ProductController extends Controller
 {
     public function index ()
     {
-        $products = Product::get();
+        $products = Product::select('products.*', 'categories.name as category_name')
+            ->join('categories', 'products.id_category', 'categories.id')
+            ->get();
         return view('admin.product.index',
         [ "listProduct" => $products]);
     }
@@ -46,9 +48,11 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::get();
         $product = Product::find($id);
         return view("admin.product.edit",[
-            "itemProduct" => $product
+            "itemProduct" => $product,
+            "listCategory" => $categories,
         ]);
     }
 
