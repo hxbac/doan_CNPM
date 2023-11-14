@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ShopController;
+use App\Http\Controllers\Client\PostController as ClientPostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -89,6 +90,10 @@ Route::prefix('/cart')->group(function () {
     Route::get('/remove/{productID}', [CartController::class, 'remove'])->name('cart.remove');
 });
 
+Route::prefix('/post')->group(function () {
+    Route::get('/', [ClientPostController::class, 'index'])->name('post.index');
+    Route::get('/{id}', [ClientPostController::class, 'detail'])->name('post.detail');
+});
 
 
 Route::get('/dashboard', function () {

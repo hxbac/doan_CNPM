@@ -64,6 +64,11 @@
                         <span class="ml-2">Quản lý bài viết</span>
                     </a>
                 </li>
+                <li class="">
+                    <a href="{{ route('home.index')}}" class="svg-icon">
+                        <span class="ml-2">Trang chủ</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="pt-5 pb-2"></div>
