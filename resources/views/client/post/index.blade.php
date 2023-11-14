@@ -21,7 +21,7 @@
                     <div class="product-offer mb-30" style="height: 300px;">
                         <img class="img-fluid" src="{{ $post->image  }}" alt="">
                         <div class="offer-text">
-                            <h3 class="text-white mb-3">{{ $post->title }}</h3>
+                            <h3 class="text-white mb-3" style="text-align: center; width: 70%;">{{ $post->title }}</h3>
                             <a href="{{ route('post.detail', ['id' => $post->id]) }}" class="btn btn-primary">Xem thêm</a>
                         </div>
                     </div>
