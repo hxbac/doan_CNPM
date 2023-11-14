@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ShopController;
@@ -64,6 +65,15 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::get('/edit/{id}', [AdminUserController::class, 'edit'])->name('admin.user.edit');
         Route::post('/update', [AdminUserController::class, 'update'])->name('admin.user.update');
         Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.user.delete');
+    });
+
+    Route::prefix('/post')->group(function () {
+        Route::get('/index', [PostController::class, 'index'])->name('admin.post.index');
+        Route::get('/create', [PostController::class, 'create'])->name('admin.post.create');
+        Route::post('/store', [PostController::class, 'store'])->name('admin.post.store');
+        Route::get('/edit/{id}', [PostController::class, 'edit'])->name('admin.post.edit');
+        Route::post('/update', [PostController::class, 'update'])->name('admin.post.update');
+        Route::get('/delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
     });
 });
 
