@@ -50,6 +50,7 @@ class PostController extends Controller
             $post->image = $imgPath;
         }
         $post->content = $request->content;
+        $post->author = $request->author;
 
         $post->save();
 
