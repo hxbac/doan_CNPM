@@ -6,7 +6,9 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\OrderController;
 use App\Http\Controllers\Client\ShopController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -79,7 +81,16 @@ Route::prefix('/cart')->group(function () {
     Route::get('/remove/{productID}', [CartController::class, 'remove'])->name('cart.remove');
 });
 
+Route::prefix('/checkout')->group(function () {
+    Route::get('/', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/order', [CheckoutController::class, 'order'])->name('checkout.order');
+});
 
+Route:: prefix('/my')->group(function () {
+    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order/{id}', [OrderController::class, 'detail'])->name('order.detail');
+    Route::get('/order/cancel/{id}', [OrderController::class, 'cancel'])->name('order.cancel');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -2,7 +2,7 @@
     <div class="navbar-nav w-100">
 
        @foreach ($listCategory as $itemCategory)
-            <a href="#" class="nav-item nav-link">
+            <a href="{{ route('shop.index', ['category' => $itemCategory->id]) }}" class="nav-item nav-link">
                 {{ $itemCategory->name }}
             </a>
        @endforeach

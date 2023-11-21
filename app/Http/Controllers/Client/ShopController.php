@@ -14,6 +14,7 @@ class ShopController extends Controller
             'memory' => $request->input('memory'),
             'price' => $request->input('price'),
             'search' => $request->input('search'),
+            'category' => $request->input('category'),
         ];
 
         $products = Product::query();
@@ -44,6 +45,9 @@ class ShopController extends Controller
         }
         if ($query['search']) {
             $products = $products->where('name', 'LIKE', '%'. $query['search'] .'%');
+        }
+        if ($query['category']) {
+            $products = $products->where('id_category', $query['category']);
         }
 
         return view('client.shop.index', [

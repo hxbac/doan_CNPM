@@ -65,7 +65,7 @@
                             <h5>Tổng</h5>
                             <h5>{{ number_format($total) }} VND</h5>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Thanh toán</button>
+                        <a href="{{ route('checkout.index') }}" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Thanh toán</a>
                     </div>
                 </div>
             </div>

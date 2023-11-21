@@ -30,6 +30,7 @@
 </head>
 
 <body>
+    <div id="loader"></div>
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
@@ -46,7 +47,7 @@
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Chào {{ Auth::user()->name ?? '' }}</button>
                             <div class="dropdown-menu dropdown-menu-right">
-                                {{-- <a href="{{ route('login') }}" class="dropdown-item">Đăng nhập</a> --}}
+                                <a href="{{ route('order.index') }}" class="dropdown-item">Quản lý đơn hàng</a>
                                 <a href="{{ route('logout') }}" class="dropdown-item">Đăng xuất</a>
                             </div>
                         </div>
@@ -230,6 +231,19 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('client/js/main.js') }}"></script>
+    <script>
+        window.addEventListener("load", () => {
+            var loader = document.getElementById("loader");
+
+            setTimeout(() => {
+                loader.classList.add("loader--hidden");
+            }, 500);
+
+            loader.addEventListener("transitionend", () => {
+                // document.body.removeChild(loader);
+            });
+        });
+    </script>
 </body>
 
 </html>

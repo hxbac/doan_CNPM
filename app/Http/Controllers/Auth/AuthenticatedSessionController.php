@@ -48,10 +48,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        if (Auth::user()->role === UserRole::ADMIN) {
-            return redirect()->route('admin.home.index');
-        } else {
-            return redirect()->route('home.index');
-        }
+        return redirect()->route('home.index');
     }
 }
