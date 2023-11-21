@@ -5,12 +5,16 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\OrderController;
 use App\Http\Controllers\Client\ShopController;
+use App\Http\Controllers\Client\PostController as ClientPostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -67,6 +71,19 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::post('/update', [AdminUserController::class, 'update'])->name('admin.user.update');
         Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.user.delete');
     });
+
+    Route::prefix('/post')->group(function () {
+        Route::get('/index', [PostController::class, 'index'])->name('admin.post.index');
+        Route::get('/create', [PostController::class, 'create'])->name('admin.post.create');
+        Route::post('/store', [PostController::class, 'store'])->name('admin.post.store');
+        Route::get('/edit/{id}', [PostController::class, 'edit'])->name('admin.post.edit');
+        Route::post('/update', [PostController::class, 'update'])->name('admin.post.update');
+        Route::get('/delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
+    });
+
+    Route::prefix('/contact')->group(function () {
+        Route::get('/index', [AdminContactController::class, 'index'])->name('admin.contact.index');
+    });
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
@@ -90,6 +107,16 @@ Route:: prefix('/my')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::get('/order/{id}', [OrderController::class, 'detail'])->name('order.detail');
     Route::get('/order/cancel/{id}', [OrderController::class, 'cancel'])->name('order.cancel');
+});
+Route::prefix('/post')->group(function () {
+    Route::get('/', [ClientPostController::class, 'index'])->name('post.index');
+    Route::get('/{id}', [ClientPostController::class, 'detail'])->name('post.detail');
+});
+
+Route::prefix('/contact')->group(function () {
+    Route::get('/', [ContactController::class, 'index'])->name('contact.index');
+    Route::get('/', [ContactController::class, 'store'])->name('contact.store');
+
 });
 
 Route::get('/dashboard', function () {
