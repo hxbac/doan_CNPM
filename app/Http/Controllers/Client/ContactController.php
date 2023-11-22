@@ -12,7 +12,7 @@ class ContactController extends Controller
         return view('client.contact.index');
     }
 
-    public function store(StoreRequest $request) {
+    public function store(Request $request) {
         
         Contact::create([
             "name" => $request->name,

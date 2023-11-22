@@ -15,7 +15,7 @@ use App\Http\Controllers\Client\OrderController;
 use App\Http\Controllers\Client\ShopController;
 use App\Http\Controllers\Client\PostController as ClientPostController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Client\ContactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -124,7 +124,7 @@ Route::prefix('/post')->group(function () {
 
 Route::prefix('/contact')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('contact.index');
-    Route::get('/', [ContactController::class, 'store'])->name('contact.store');
+    Route::post('/', [ContactController::class, 'store'])->name('contact.store');
 
 });
 
