@@ -20,6 +20,6 @@ class AuthAdminMiddleware
         if (Auth::user() && Auth::user()->role === UserRole::ADMIN) {
             return $next($request);
         }
-        return redirect()->route('home.index');
+        return abort(403);
     }
 }

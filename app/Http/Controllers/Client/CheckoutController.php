@@ -57,5 +57,7 @@ class CheckoutController extends Controller
         $order->save();
 
         Cart::where('userID', $user->id)->delete();
+
+        return redirect()->route('order.index');
     }
 }

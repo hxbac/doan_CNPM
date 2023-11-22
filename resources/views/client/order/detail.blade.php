@@ -31,7 +31,7 @@
                     <b>Tổng số tiền:</b> {{ number_format($order->total) }} VND
                 </p>
                 <p class="mb-3">
-                    <b>Ghi chú:</b> {{ number_format($order->note) }}
+                    <b>Ghi chú:</b> {{ $order->note }}
                 </p>
             </div>
             <div class="col-12">
