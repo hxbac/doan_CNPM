@@ -17,7 +17,7 @@ class PostController extends Controller
     }
 
     public function detail ($id) {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('client.post.detail', [
             'post' => $post,
         ]);

@@ -35,7 +35,7 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view("admin.post.edit",[
             "itemPost" => $post
         ]);
@@ -43,7 +43,7 @@ class PostController extends Controller
 
     public function update(Request $request)
     {
-        $post = Post::find($request->id);
+        $post = Post::findOrFail($request->id);
         $post->title = $request->title;
         if ($request->changeImage) {
             $imgPath = $this->uploadFile($request->file('image'), 'post');
@@ -59,7 +59,7 @@ class PostController extends Controller
 
     public function delete($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->delete();
         return redirect()->route('admin.post.index');
     }
