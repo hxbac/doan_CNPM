@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         return view('admin.category.edit', [
             "itemCategory" => $category
         ]);
@@ -39,7 +39,7 @@ class CategoryController extends Controller
 
     public function update(Request $request)
     {
-        $category = Category::find($request->id);
+        $category = Category::findOrFail($request->id);
         $category->name = $request->name;
         $category->describe = $request->describe;
 
@@ -50,7 +50,7 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         $category->delete();
 
         return redirect()->route('admin.category.index');

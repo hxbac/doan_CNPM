@@ -33,7 +33,7 @@ class MenuController extends Controller
 
     public function edit($id)
     {
-        $menu = Menu::find($id);
+        $menu = Menu::findOrFail($id);
         return view("admin.menu.edit",[
             "itemMenu" => $menu
         ]);
@@ -41,7 +41,7 @@ class MenuController extends Controller
 
     public function update(Request $request)
     {
-        $menu = Menu::find($request->id);
+        $menu = Menu::findOrFail($request->id);
         $menu->name = $request->name;
         $menu->route = $request->route;
         $menu->order = $request->order;
@@ -53,7 +53,7 @@ class MenuController extends Controller
 
     public function delete($id)
     {
-        $menu = Menu::find($id);
+        $menu = Menu::findOrFail($id);
         $menu->delete();
         return redirect()->route('admin.menu.index');
     }

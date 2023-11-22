@@ -49,7 +49,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $categories = Category::get();
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return view("admin.product.edit",[
             "itemProduct" => $product,
             "listCategory" => $categories,
@@ -58,7 +58,7 @@ class ProductController extends Controller
 
     public function update(Request $request)
     {
-        $product = Product::find($request->id);
+        $product = Product::findOrFail($request->id);
         $product->name = $request->name;
         if ($request->changeImage) {
             $imgPath = $this->uploadFile($request->file('image'), 'product');
@@ -78,7 +78,7 @@ class ProductController extends Controller
 
     public function delete($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $product->delete();
         return redirect()->route('admin.product.index');
     }
