@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\HomeController;
@@ -83,6 +84,14 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
 
     Route::prefix('/contact')->group(function () {
         Route::get('/index', [AdminContactController::class, 'index'])->name('admin.contact.index');
+    });
+
+    Route::prefix('/order')->group(function() {
+        Route::get('/', [AdminOrderController::class, 'index'])->name('admin.order.index');
+        Route::get('/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
+        Route::get('/accept/{id}', [AdminOrderController::class, 'accept'])->name('admin.order.accept');
+        Route::get('/cancel/{id}', [AdminOrderController::class, 'cancel'])->name('admin.order.cancel');
+        Route::get('/success/{id}', [AdminOrderController::class, 'success'])->name('admin.order.success');
     });
 });
 
