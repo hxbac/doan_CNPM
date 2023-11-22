@@ -101,18 +101,18 @@ Route::prefix('/shop')->group(function () {
     Route::get('/{slug}/{id}', [ShopController::class, 'detail'])->name('shop.detail');
 });
 
-Route::prefix('/cart')->group(function () {
+Route::prefix('/cart')->middleware('auth')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
     Route::post('/add', [CartController::class, 'add'])->name('cart.add');
     Route::get('/remove/{productID}', [CartController::class, 'remove'])->name('cart.remove');
 });
 
-Route::prefix('/checkout')->group(function () {
+Route::prefix('/checkout')->middleware('auth')->group(function () {
     Route::get('/', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/order', [CheckoutController::class, 'order'])->name('checkout.order');
 });
 
-Route:: prefix('/my')->group(function () {
+Route:: prefix('/my')->middleware('auth')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::get('/order/{id}', [OrderController::class, 'detail'])->name('order.detail');
     Route::get('/order/cancel/{id}', [OrderController::class, 'cancel'])->name('order.cancel');
