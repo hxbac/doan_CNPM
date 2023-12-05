@@ -9760,3 +9760,7 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translateY(-15px);
   }
 }
+
+.product-action .btn.btn-outline-dark.btn-square {
+    transform: scale(2.5);
+}

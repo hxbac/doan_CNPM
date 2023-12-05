@@ -14,7 +14,7 @@ class OrderController extends Controller
     public function index() {
         $orders = Order::select('orders.*', 'users.name')
             ->join('users', 'users.id', 'orders.userID')
-            ->orderBy('id', 'DESC')
+            ->orderBy('orders.id', 'DESC')
             ->get();
         return view('admin.order.index', [
             'orders' => $orders,
