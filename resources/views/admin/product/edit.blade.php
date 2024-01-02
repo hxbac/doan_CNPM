@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Mô tả</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->describe }}"name="describe">
+                                <textarea class="form-control" name="describe">{{ $itemProduct->describe }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Màn hình</label>

@@ -14,21 +14,21 @@
     </div>
     <!-- Breadcrumb End -->
     <div class="row px-xl-5">
-            <div class="col">
-                <div class="bg-light p-30">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="tab-pane-1">
-                            <h4  style="text-align: center; " class="mb-3">{{ $post->title }}</h4>
-                            <div style="display: flex; justify-content: center;">
-                                <img src="{{$post->image}}" alt="">
-                            </div>
-                            <p style="margin-top: 20px; text-align: justify; line-height: 1.6; padding: 0 100px">
-                                {{ $post->content }}
-                            </p>
+        <div class="col">
+            <div class="bg-light p-30">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-pane-1">
+                        <h4  style="text-align: center; " class="mb-3">{{ $post->title }}</h4>
+                        <div style="display: flex; justify-content: center;">
+                            <img src="{{$post->image}}" alt="">
                         </div>
+                        <p style="margin-top: 20px; text-align: justify; line-height: 1.6; padding: 0 100px">
+                            {!! $post->content !!}
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 @endsection

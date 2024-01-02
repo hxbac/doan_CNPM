@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Mô tả</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="describe" >
+                                    <textarea class="form-control" id="validationDefault01" name="describe" ></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Màn hình</label>

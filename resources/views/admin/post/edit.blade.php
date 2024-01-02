@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Nội dung</label>
-                                <input type="text" class="form-control" value="{{ $itemPost->content }}"name="content">
+                                <textarea class="form-control" name="content">{{ $itemPost->content }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Tác giả</label>

@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Nội dung</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="content" >
+                                    <textarea type="text" class="form-control" id="validationDefault01" name="content" ></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Tác giả</label>

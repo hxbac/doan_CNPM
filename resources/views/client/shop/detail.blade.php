@@ -119,7 +119,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-pane-1">
                             <h4 class="mb-3">Mô tả sản phẩm</h4>
-                            <p>{{{ $product->describe }}}</p>
+                            <p>{!! $product->describe !!}</p>
                         </div>
                         <div class="tab-pane fade" id="tab-pane-2">
                             <h4 class="mb-3">Additional Information</h4>
