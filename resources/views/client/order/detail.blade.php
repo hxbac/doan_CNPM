@@ -1,3 +1,6 @@
+@php
+    use App\Enums\OrderStatus;
+@endphp
 @extends('layouts.app')
 @section('content')
     <!-- Breadcrumb Start -->
@@ -33,6 +36,14 @@
                 <p class="mb-3">
                     <b>Ghi chú:</b> {{ $order->note }}
                 </p>
+                <p class="mb-3">
+                    <b>Thông báo:</b> {{ $order->message }}
+                </p>
+                @if ($order->status === OrderStatus::ORDER)
+                    <p class="mb-3 d-flex align-items-center justify-content-center">
+                        <a class="btn btn-danger" href="{{ route('order.cancel', ['id' => $order->id]) }}">Hủy đặt hàng</a>
+                    </p>
+                @endif
             </div>
             <div class="col-12">
                 <table class="table table-light table-borderless table-hover text-center mb-0">

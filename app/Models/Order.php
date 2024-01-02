@@ -24,18 +24,13 @@ class Order extends Model
     public function getStatusStr() {
         switch ($this->status) {
             case OrderStatus::ORDER:
-                $user = Auth::user() ?? null;
-                $str = ' </br> <a href="'. route('order.cancel', ['id' => $this->id]) .'">Hủy đặt hàng</a>';
-                if ($user->role === UserRole::ADMIN) {
-                    $str = '';
-                }
-                return 'Chờ admin xác nhận.'. $str;
+                return '<span class="badge badge-warning">Chờ</span>';
             case OrderStatus::CANCEL_ORDER:
-                return 'Đơn đặt hàng đã bị hủy.';
+                return '<span class="badge badge-danger">Hủy</span>';
             case OrderStatus::CONFIRM_ORDER:
-                return 'Đơn đặt hàng đã được xác nhận. Chờ giao hàng.';
+                return '<span class="badge badge-info">Giao hàng</span>';
             case OrderStatus::ORDER_SUCCESS:
-                return 'Đơn đặt hàng thành công.';
+                return '<span class="badge badge-success">Thành công</span>';
             default:
                 return 'Trạng thái không xác định';
         }

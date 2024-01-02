@@ -17,13 +17,10 @@ class HomeController extends Controller
         $totalOrder = Order::where('status', OrderStatus::ORDER_SUCCESS)->count();
         $totalRevenue = Order::where('status', OrderStatus::ORDER_SUCCESS)->sum('total');
 
-        $datetime = new Carbon(date('Y').'-'.date('m').'-01 00:00:00');
+        $datetime = Carbon::now()->subMonth();
         $dataChart = Order::selectRaw('DAY(created_at) as day, SUM(total) as total')
-            ->whereDate('created_at', '>=', $datetime)
+            ->whereDate('created_at', '>', $datetime)
             ->where('status', OrderStatus::ORDER_SUCCESS)
-            // ->groupBy(function ($date) {
-            //     return Carbon::parse($date->created_at)->format('d');
-            // })
             ->groupBy(DB::raw('DAY(created_at)'))
             ->get();
         $dataRevenueMonth = [];

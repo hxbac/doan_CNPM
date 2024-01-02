@@ -34,7 +34,7 @@
                                                 <td class="sorting_1"><a href="{{ route('admin.order.detail', ['id' => $order->id]) }}">Đơn hàng {{ $order->id }}</a></td>
                                                 <td>{{ $order->name }}</td>
                                                 <td>{{ $order->created_at }}</td>
-                                                <td>{{ $order->getStatusStr() }}</td>
+                                                <td>{!! $order->getStatusStr() !!}</td>
                                                 <td>{{ $order->message }}</td>
                                             </tr>
                                         @endforeach
