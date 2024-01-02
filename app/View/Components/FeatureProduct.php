@@ -22,7 +22,7 @@ class FeatureProduct extends Component
      */
     public function render(): View|Closure|string
     {
-        $products = Product::query()->take(8)->get();
+        $products = Product::query()->orderBy('created_at', 'DESC')->take(8)->get();
         return view('components.feature-product', [
             'products' => $products
         ]);

@@ -2,12 +2,13 @@
 
 namespace App\View\Components;
 
-use App\Models\Menu;
+use App\Enums\ConfigKey;
+use App\Models\Config;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class MenuComponent extends Component
+class BannerHomeComponent extends Component
 {
     /**
      * Create a new component instance.
@@ -22,9 +23,10 @@ class MenuComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        $menus = Menu::get();
-        return view('components.menu-component', [
-            "menus" => $menus
+        $configs = Config::all()->keyBy('key');
+        return view('components.banner-home-component', [
+            'slides' => json_decode($configs[ConfigKey::SLIDE]->value),
+            'banners' => json_decode($configs[ConfigKey::BANNER]->value),
         ]);
     }
 }

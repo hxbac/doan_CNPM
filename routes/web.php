@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\MenuController;
@@ -92,6 +93,12 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::get('/accept/{id}', [AdminOrderController::class, 'accept'])->name('admin.order.accept');
         Route::get('/cancel/{id}', [AdminOrderController::class, 'cancel'])->name('admin.order.cancel');
         Route::get('/success/{id}', [AdminOrderController::class, 'success'])->name('admin.order.success');
+    });
+
+    Route::prefix('/config')->group(function () {
+        Route::get('/', [ConfigController::class, 'index'])->name('admin.config.index');
+        Route::post('/slide', [ConfigController::class, 'slide'])->name('admin.config.slide');
+        Route::post('/banner', [ConfigController::class, 'banner'])->name('admin.config.banner');
     });
 });
 
