@@ -22,7 +22,7 @@ class MenuComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        $menus = Menu::get();
+        $menus = Menu::orderBy('order', 'ASC')->get();
         return view('components.menu-component', [
             "menus" => $menus
         ]);

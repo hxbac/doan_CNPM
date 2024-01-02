@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -17,7 +18,14 @@ class ShopController extends Controller
             'category' => $request->input('category'),
         ];
 
-        $products = Product::query();
+        $products = Product::query()
+            ->leftJoin(
+                DB::raw('(
+                    SELECT productID, SUM(quantity) AS total_quantity FROM order_details
+                    GROUP BY productID
+                ) AS total'),
+                'products.id', 'total.productID'
+            );
         if ($query['ram']) {
             $products = $products->where('ram', $query['ram']);
         }

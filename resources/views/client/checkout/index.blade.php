@@ -29,15 +29,15 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label>Họ tên người nhận</label>
-                                <input class="form-control" type="text" name="fullname">
+                                <input class="form-control" type="text" name="fullname" required>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Số điện thoại người nhận</label>
-                                <input class="form-control" type="text" name="phone">
+                                <input class="form-control" type="text" name="phone" required>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Địa chỉ người nhận</label>
-                                <input class="form-control" type="text" name="address">
+                                <input class="form-control" type="text" name="address" required>
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Lời nhắn</label>

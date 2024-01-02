@@ -15,11 +15,11 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Tên danh mục</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="name" >
+                                    <input type="text" class="form-control" required id="validationDefault01" name="name" >
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Mô tả</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="describe" >
+                                    <input type="text" class="form-control" required id="validationDefault01" name="describe" >
                                 </div>
                             </div>
                             <div class="form-group">

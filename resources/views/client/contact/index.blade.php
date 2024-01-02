@@ -22,15 +22,15 @@
                     <form method="post" action="{{ route('contact.store') }}">
                         @csrf
                         <div class="control-group">
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Họ và Tên" required="required">
+                            <input type="text" class="form-control" name="name" required id="name" placeholder="Họ và Tên" required="required">
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="required" >
+                            <input type="email" class="form-control" name="email"  requiredid="email" placeholder="Email" required="required" >
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control" rows="8" name="message" id="message" placeholder="Lời nhắn" required="required" ></textarea>
+                            <textarea class="form-control" rows="8" name="message" required id="message" placeholder="Lời nhắn" required="required" ></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>

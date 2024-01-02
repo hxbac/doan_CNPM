@@ -141,6 +141,9 @@
                                     <div class="d-flex align-items-center justify-content-center mt-2">
                                         <h5>{{ number_format($product->price) }} VND</h5>
                                     </div>
+                                    <div class="d-flex align-items-center justify-content-center mb-1">
+                                        <small>Số lượt mua: {{ $product->total_quantity ?? 0 }}</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>

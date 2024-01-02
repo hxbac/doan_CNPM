@@ -45,7 +45,7 @@
                         <div class="top-block d-flex align-items-center justify-content-between">
                             <h5>Tổng đơn hàng</h5>
                         </div>
-                        <h3><span class="counter" style="visibility: visible;">{{ number_format($totalUser) }}</span></h3>
+                        <h3><span class="counter" style="visibility: visible;">{{ number_format($totalOrder) }}</span></h3>
                         <div class="d-flex align-items-center justify-content-between mt-1">
                             <p class="mb-0">Tổng đơn hàng</p>
                             <span class="text-success">85%</span>
@@ -61,7 +61,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Doanh thu theo ngày trong tháng {{ date('m') }}</h4>
+                            <h4 class="card-title">Doanh thu theo ngày trong 1 tháng gần đây</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -81,6 +81,10 @@
             }
         @endphp
         document.addEventListener("DOMContentLoaded", () => {
+            const VNDFormatter = new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND',
+            });
             if (jQuery("#chart-revenue-month").length) {
                 options = {
                     chart: {
@@ -112,7 +116,30 @@
                         }
                     },
                     xaxis: {
-                        categories: [{{ $dayStr }}]
+                        categories: [{{ $dayStr }}],
+                        labels: {
+                            formatter: function (value) {
+                                let month = (new Date()).getMonth() + 1;
+                                let day = (new Date()).getDay();
+                                if (month < 10) {
+                                    month = '0' + month;
+                                }
+                                if (value < 10) {
+                                    value = '0' + value;
+                                }
+                                if (value > day) {
+                                    return `${value}/${month == 1 ? 12 : month - 1}`
+                                }
+                                return `${value}/${month}`
+                            }
+                        }
+                    },
+                    yaxis: {
+                        labels: {
+                            formatter: function (value) {
+                                return VNDFormatter.format(value);
+                            }
+                        },
                     }
                 };
                 if (typeof ApexCharts !== typeof undefined) {

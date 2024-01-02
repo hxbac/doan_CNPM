@@ -33,12 +33,7 @@
                                 <h5>{{ number_format($product->price) }} VND</h5>
                             </div>
                             <div class="d-flex align-items-center justify-content-center mb-1">
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small class="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
+                                <small>Số lượt mua: {{ $product->total_quantity ?? 0 }}</small>
                             </div>
                         </div>
                     </div>

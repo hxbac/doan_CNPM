@@ -15,11 +15,11 @@
                             <input type="hidden" value="{{ $itemCategory->id }}" name="id">
                             <div class="form-group">
                                 <label for="email">Tên danh mục</label>
-                                <input type="text" class="form-control" value="{{ $itemCategory->name }}" name="name">
+                                <input type="text" class="form-control" required value="{{ $itemCategory->name }}" name="name">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Mô tả</label>
-                                <input type="text" class="form-control" value="{{ $itemCategory->describe }}" name="describe">
+                                <input type="text" class="form-control" required value="{{ $itemCategory->describe }}" name="describe">
                             </div>
                             <button type="submit" class="btn btn-primary">Sửa</button>
                             <a href="{{ route('admin.category.index') }}" class="btn bg-danger">Quay lại</a>

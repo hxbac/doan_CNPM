@@ -15,7 +15,7 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Tiêu đề</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="title" >
+                                    <input type="text" class="form-control" required id="validationDefault01" name="title" >
                                 </div>
                                 <div class="col-md-12 mb-3">
                                 <label for="validationDefault01">Hình ảnh</label>
@@ -26,11 +26,11 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Nội dung</label>
-                                    <textarea type="text" class="form-control" id="validationDefault01" name="content" ></textarea>
+                                    <textarea type="text" class="form-control" required  requiredid="validationDefault01" name="content" ></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Tác giả</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="author" >
+                                    <input type="text" class="form-control" required id="validationDefault01" name="author" >
                                 </div>
                             </div>
                             <div class="form-group">

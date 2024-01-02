@@ -22,18 +22,15 @@ class HomeController extends Controller
             ->whereDate('created_at', '>', $datetime)
             ->where('status', OrderStatus::ORDER_SUCCESS)
             ->groupBy(DB::raw('DAY(created_at)'))
-            ->get();
+            ->get()
+            ->keyBy('day');
         $dataRevenueMonth = [];
-        for ($day = 1; $day <= date('d'); $day++) {
+        $now = Carbon::now();
+        while ($datetime->addDay()->lessThan($now)) {
             $temp = (object)[
-                'day' => $day,
-                'total' => 0
+                'day' => $datetime->day,
+                'total' => isset($dataChart[$datetime->day]) ? $dataChart[$datetime->day]->total : 0,
             ];
-            foreach ($dataChart as $item) {
-                if ($item->day == $day) {
-                    $temp->total = $item->total;
-                }
-            }
             array_push($dataRevenueMonth, $temp);
         }
 

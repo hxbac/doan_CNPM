@@ -15,15 +15,15 @@
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Tên menu</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="name" >
+                                    <input type="text" class="form-control" required id="validationDefault01" name="name" >
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Route</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="route" >
+                                    <input type="text" class="form-control" required id="validationDefault01" name="route" >
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Thứ tự</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="order" >
+                                    <input type="text" class="form-control" required id="validationDefault01" name="order" >
                                 </div>
                             </div>
                             <div class="form-group">

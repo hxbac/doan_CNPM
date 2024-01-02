@@ -15,7 +15,7 @@
                             <input type="hidden" value="{{ $itemPost->id }}" name="id">
                             <div class="form-group">
                                 <label for="email">Tiêu đề</label>
-                                <input type="text" class="form-control" value="{{ $itemPost->title }}" name="title">
+                                <input type="text" class="form-control" required value="{{ $itemPost->title }}" name="title">
                             </div>
                             <div class="form-group">
                                 <label for="validationDefault01">Hình ảnh</label>
@@ -30,11 +30,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Nội dung</label>
-                                <textarea class="form-control" name="content">{{ $itemPost->content }}</textarea>
+                                <textarea class="form-control" required name="content">{{ $itemPost->content }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Tác giả</label>
-                                <input type="text" class="form-control" value="{{ $itemPost->author }}"name="author">
+                                <input type="text" class="form-control" required value="{{ $itemPost->author }}"name="author">
                             </div>
                             <button type="submit" class="btn btn-primary">Sửa</button>
                             <a href="{{ route('admin.post.index') }}" class="btn bg-danger">Quay lại</a>

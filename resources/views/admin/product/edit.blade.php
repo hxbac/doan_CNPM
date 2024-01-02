@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">Tên sản phẩm</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->name }}" name="name">
+                                <input type="text" class="form-control" required value="{{ $itemProduct->name }}" name="name">
                             </div>
                             <div class="form-group">
                                 <label for="validationDefault01">Hình ảnh</label>
@@ -41,19 +41,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Giá</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->price }}"name="price">
+                                <input type="text" class="form-control" required value="{{ $itemProduct->price }}"name="price">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Mô tả</label>
-                                <textarea class="form-control" name="describe">{{ $itemProduct->describe }}</textarea>
+                                <textarea class="form-control" required name="describe">{{ $itemProduct->describe }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Màn hình</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->screen }}"name="screen">
+                                <input type="text" class="form-control" required value="{{ $itemProduct->screen }}"name="screen">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">CPU</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->cpu }}"name="cpu">
+                                <input type="text" class="form-control" required value="{{ $itemProduct->cpu }}"name="cpu">
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="validationDefault01">Ram</label>
@@ -79,15 +79,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Card</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->card }}"name="card">
+                                <input type="text" class="form-control" required value="{{ $itemProduct->card }}"name="card">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Pin</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->battery }}"name="battery">
+                                <input type="text" class="form-control" required value="{{ $itemProduct->battery }}"name="battery">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Khối lượng</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->mass }}"name="mass">
+                                <input type="text" class="form-control" required value="{{ $itemProduct->mass }}"name="mass">
                             </div>
                             <button type="submit" class="btn btn-primary">Sửa</button>
                             <a href="{{ route('admin.product.index') }}" class="btn bg-danger">Quay lại</a>

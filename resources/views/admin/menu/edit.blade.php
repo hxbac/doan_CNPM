@@ -15,15 +15,15 @@
                             <input type="hidden" value="{{ $itemMenu->id }}" name="id">
                             <div class="form-group">
                                 <label for="email">Tên menu</label>
-                                <input type="text" class="form-control" value="{{ $itemMenu->name }}" name="name">
+                                <input type="text" class="form-control" required value="{{ $itemMenu->name }}" name="name">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Route</label>
-                                <input type="text" class="form-control" value="{{ $itemMenu->route }}" name="route">
+                                <input type="text" class="form-control" required value="{{ $itemMenu->route }}" name="route">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Thứ tự</label>
-                                <input type="text" class="form-control" value="{{ $itemMenu->order }}"name="order">
+                                <input type="text" class="form-control" required value="{{ $itemMenu->order }}"name="order">
                             </div>
                             <button type="submit" class="btn btn-primary">Sửa</button>
                             <a href="{{ route('admin.menu.index') }}" class="btn bg-danger">Quay lại</a>
