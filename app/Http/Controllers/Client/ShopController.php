@@ -51,7 +51,7 @@ class ShopController extends Controller
         }
 
         return view('client.shop.index', [
-            'products' => $products->paginate(9),
+            'products' => $products->paginate(6),
             'query' => $query,
         ]);
     }

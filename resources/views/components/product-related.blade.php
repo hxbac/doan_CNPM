@@ -10,10 +10,18 @@
                         <div class="product-img position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{ $product->image }}" alt="">
                             <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square" href="{{ route('shop.detail', [
-                                    'slug' => $product->getSlug(),
-                                    'id' => $product->id
-                                ]) }}"><i class="fa fa-search"></i></a>
+                                <a class="w-100 h-100 p-3 d-block"
+                                    href="{{ route('shop.detail', [
+                                        'slug' => $product->getSlug(),
+                                        'id' => $product->id,
+                                    ]) }}"
+                                >
+                                    <div class="mb-2" style="max-height: 48px; overflow: hidden">CPU: {{ $product->cpu }}</div>
+                                    <div class="mb-2" style="max-height: 48px; overflow: hidden">Ram: {{ $product->ram }}GB</div>
+                                    <div class="mb-2" style="max-height: 48px; overflow: hidden">Bộ nhớ: {{ $product->memory }}GB</div>
+                                    <div class="mb-2" style="max-height: 48px; overflow: hidden">Card: {{ $product->card }}</div>
+                                    <div class="mb-2" style="max-height: 48px; overflow: hidden">Màn hình: {{ $product->screen }}</div>
+                                </a>
                             </div>
                         </div>
                         <div class="text-center py-4">

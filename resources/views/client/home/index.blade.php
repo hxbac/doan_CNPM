@@ -32,4 +32,6 @@
     </div>
 
     <x-feature-product />
+
+    <x-post-new-component />
 @endsection

@@ -1,4 +1,7 @@
-
+@php
+    use App\Enums\UserRole;
+    $user = Auth::user();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,6 +45,9 @@
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Chào {{ Auth::user()->name ?? '' }}</button>
                             <div class="dropdown-menu dropdown-menu-right">
+                                @if ($user && $user->role === UserRole::ADMIN)
+                                    <a href="{{ route('admin.home.index') }}" class="dropdown-item">Trang quản trị</a>
+                                @endif
                                 <a href="{{ route('order.index') }}" class="dropdown-item">Quản lý đơn hàng</a>
                                 <a href="{{ route('logout') }}" class="dropdown-item">Đăng xuất</a>
                             </div>
@@ -79,11 +85,11 @@
             <div class="col-lg-4 col-6 text-left">
                 <form action="{{ route('shop.index') }}" method="GET">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="search" placeholder="Tìm kiếm sản phẩm">
+                        <input type="text" class="form-control" name="search" value="{{ request()->input('search', '') }}" placeholder="Tìm kiếm sản phẩm">
                         <div class="input-group-append" style="cursor: pointer;">
-                            <span class="input-group-text bg-transparent text-primary">
+                            <button class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
-                            </span>
+                            </button>
                         </div>
                     </div>
                 </form>
