@@ -10,12 +10,23 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    /**
+     * Show list order for user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $user = Auth::user();
         $orders = Order::where('userID', $user->id)->orderBy('id', 'DESC')->get();
         return view('client.order.index', ['orders' => $orders]);
     }
 
+    /**
+     * Show detail order
+     *
+     * @param integer $id order
+     * @return \Illuminate\Contracts\View\View
+     */
     public function detail($id) {
         $order = Order::where('id', $id)->where('userID', Auth::id())->firstOrFail();
         $orderDetail = OrderDetail::select('products.*', 'order_details.quantity', 'order_details.price')
@@ -28,6 +39,12 @@ class OrderController extends Controller
         ]);
     }
 
+    /**
+     * Handle user cancel order
+     *
+     * @param integer $id order
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function cancel($id) {
         $order = Order::where('id', $id)
             ->where('userID', Auth::id())

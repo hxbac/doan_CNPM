@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
+    /**
+     * Show checkout page
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $user = Auth::user();
         $cart = Cart::select('carts.*', 'products.price', 'products.name')
@@ -23,6 +28,12 @@ class CheckoutController extends Controller
         ]);
     }
 
+    /**
+     * Handle add order for user
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function order(Request $request) {
         $user = Auth::user();
 

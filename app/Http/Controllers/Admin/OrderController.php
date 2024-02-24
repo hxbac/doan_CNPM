@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    /**
+     * Show list order
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $orders = Order::select('orders.*', 'users.name')
             ->join('users', 'users.id', 'orders.userID')
@@ -21,6 +26,12 @@ class OrderController extends Controller
         ]);
     }
 
+    /**
+     * Show detail order
+     *
+     * @param integer $id order
+     * @return \Illuminate\Contracts\View\View
+     */
     public function detail($id) {
         $order = Order::where('id', $id)->firstOrFail();
         $orderDetail = OrderDetail::select('products.*', 'order_details.quantity', 'order_details.price')
@@ -33,28 +44,52 @@ class OrderController extends Controller
         ]);
     }
 
+    /**
+     * Handle update status accept order
+     *
+     * @param integer $id order
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function accept($id) {
         $order = Order::where('status', OrderStatus::ORDER)->where('id', $id)->firstOrFail();
         $order->status = OrderStatus::CONFIRM_ORDER;
         $order->message = Auth::user()->name . ' đã xác nhận đơn hàng.';
         $order->save();
-        return redirect()->route('admin.order.index');
+        return redirect()->route('admin.order.detail', [
+            'id' => $id
+        ]);
     }
 
+    /**
+     * Handle update status success order
+     *
+     * @param integer $id order
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function success($id) {
         $order = Order::where('status', OrderStatus::CONFIRM_ORDER)->where('id', $id)->firstOrFail();
         $order->status = OrderStatus::ORDER_SUCCESS;
         $order->message = Auth::user()->name . ' đã xác nhận đơn hàng giao thành công.';
         $order->save();
-        return redirect()->route('admin.order.index');
+        return redirect()->route('admin.order.detail', [
+            'id' => $id
+        ]);
     }
 
-    public function cancel(Request $request, $id) {
+    /**
+     * Handle update status cancel order
+     *
+     * @param integer $id order
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function cancel($id) {
         $order = Order::where('status', OrderStatus::ORDER)->where('id', $id)->firstOrFail();
         $order->status = OrderStatus::CANCEL_ORDER;
         // $order->message = $request->reason;
         $order->message = Auth::user()->name . ' đã hủy đơn hàng.';
         $order->save();
-        return redirect()->route('admin.order.index');
+        return redirect()->route('admin.order.detail', [
+            'id' => $id
+        ]);
     }
 }

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /**
+     * Show list post
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         $posts = Post::get();
@@ -16,11 +21,22 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Show form create post
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function create()
     {
         return view("admin.post.create");
     }
 
+    /**
+     * Handle create post
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $imgPath = $this->uploadFile($request->file('image'), 'post');
@@ -33,6 +49,12 @@ class PostController extends Controller
         return redirect()->route('admin.post.index');
     }
 
+    /**
+     * Show form edit post
+     *
+     * @param integer $id post
+     * @return \Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         $post = Post::findOrFail($id);
@@ -41,6 +63,12 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Handle update post
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $post = Post::findOrFail($request->id);
@@ -57,6 +85,12 @@ class PostController extends Controller
         return redirect()->route('admin.post.index');
     }
 
+    /**
+     * Handle delete post
+     *
+     * @param integer $id post
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function delete($id)
     {
         $post = Post::findOrFail($id);

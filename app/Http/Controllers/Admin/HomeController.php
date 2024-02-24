@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    /**
+     * Show dashboard admin manager
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $totalUser = User::count();
         $totalOrder = Order::where('status', OrderStatus::ORDER_SUCCESS)->count();

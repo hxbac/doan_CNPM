@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class ConfigController extends Controller
 {
+    /**
+     * Show config website
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $configs = Config::all()->keyBy('key');
         return view('admin.config.index', [
@@ -17,6 +22,12 @@ class ConfigController extends Controller
         ]);
     }
 
+    /**
+     * Handle update slide for home page
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function slide(Request $request) {
         $slideRecord = Config::query()
             ->where('key', ConfigKey::SLIDE)
@@ -34,6 +45,12 @@ class ConfigController extends Controller
         return redirect()->route('admin.config.index');
     }
 
+    /**
+     * Handle update banner for home page
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function banner(Request $request) {
         $bannerRecord = Config::query()
             ->where('key', ConfigKey::BANNER)

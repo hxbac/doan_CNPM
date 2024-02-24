@@ -39,7 +39,6 @@ Route::get('/logout', function () {
 
 Route::prefix('admin')->middleware('auth.admin')->group(function () {
     Route::get('/index', [AdminHomeController::class, 'index'])->name('admin.home.index');
-
     Route::prefix('/menu')->group(function () {
         Route::get('/index', [MenuController::class, 'index'])->name('admin.menu.index');
         Route::get('/create', [MenuController::class, 'create'])->name('admin.menu.create');
@@ -64,7 +63,6 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::post('/update', [CategoryController::class, 'update'])->name('admin.category.update');
         Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
     });
-
     Route::prefix('/user')->group(function () {
         Route::get('/index', [AdminUserController::class, 'index'])->name('admin.user.index');
         Route::get('/create', [AdminUserController::class, 'create'])->name('admin.user.create');
@@ -73,7 +71,6 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::post('/update', [AdminUserController::class, 'update'])->name('admin.user.update');
         Route::get('/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.user.delete');
     });
-
     Route::prefix('/post')->group(function () {
         Route::get('/index', [PostController::class, 'index'])->name('admin.post.index');
         Route::get('/create', [PostController::class, 'create'])->name('admin.post.create');
@@ -82,11 +79,9 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::post('/update', [PostController::class, 'update'])->name('admin.post.update');
         Route::get('/delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
     });
-
     Route::prefix('/contact')->group(function () {
         Route::get('/index', [AdminContactController::class, 'index'])->name('admin.contact.index');
     });
-
     Route::prefix('/order')->group(function() {
         Route::get('/', [AdminOrderController::class, 'index'])->name('admin.order.index');
         Route::get('/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
@@ -94,7 +89,6 @@ Route::prefix('admin')->middleware('auth.admin')->group(function () {
         Route::get('/cancel/{id}', [AdminOrderController::class, 'cancel'])->name('admin.order.cancel');
         Route::get('/success/{id}', [AdminOrderController::class, 'success'])->name('admin.order.success');
     });
-
     Route::prefix('/config')->group(function () {
         Route::get('/', [ConfigController::class, 'index'])->name('admin.config.index');
         Route::post('/slide', [ConfigController::class, 'slide'])->name('admin.config.slide');
@@ -132,7 +126,6 @@ Route::prefix('/post')->group(function () {
 Route::prefix('/contact')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('contact.index');
     Route::post('/', [ContactController::class, 'store'])->name('contact.store');
-
 });
 
 Route::get('/dashboard', function () {

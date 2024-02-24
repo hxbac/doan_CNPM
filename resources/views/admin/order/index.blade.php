@@ -26,16 +26,19 @@
                                             colspan="1" style="width: 39.7031px;">Trạng thái</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
                                             colspan="1" style="width: 39.7031px;">Tin nhắn</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                            colspan="1" style="width: 39.7031px;">Chức năng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($orders as $order )
                                             <tr role="row" class="odd">
-                                                <td class="sorting_1"><a href="{{ route('admin.order.detail', ['id' => $order->id]) }}">Đơn hàng {{ $order->id }}</a></td>
+                                                <td class="sorting_1">{{ $order->id }}</td>
                                                 <td>{{ $order->name }}</td>
                                                 <td>{{ $order->created_at }}</td>
                                                 <td>{!! $order->getStatusStr() !!}</td>
                                                 <td>{{ $order->message }}</td>
+                                                <td><a href="{{ route('admin.order.detail', ['id' => $order->id]) }}" class="btn btn-primary">Chi tiết</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

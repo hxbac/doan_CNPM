@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
+    /**
+     * Show list product
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index(Request $request) {
         $query = [
             'ram' => $request->input('ram'),
@@ -64,6 +70,13 @@ class ShopController extends Controller
         ]);
     }
 
+    /**
+     * Show product detail
+     *
+     * @param string $slug
+     * @param integer $id
+     * @return \Illuminate\Contracts\View\View
+     */
     public function detail($slug, $id) {
         try {
             $product = Product::findOrFail($id);

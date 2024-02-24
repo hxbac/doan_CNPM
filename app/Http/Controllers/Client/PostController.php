@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /**
+     * Show list post
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $posts = Post::get();
 
@@ -16,6 +21,12 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * Show detail post
+     *
+     * @param integer $id post
+     * @return \Illuminate\Contracts\View\View
+     */
     public function detail ($id) {
         $post = Post::findOrFail($id);
         return view('client.post.detail', [

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    /**
+     * Show list contact for admin
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         $contacts = Contact::get();

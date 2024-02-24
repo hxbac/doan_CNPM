@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Home page
-     * @return view
+     * Show home page
+     *
+     * @return \Illuminate\Contracts\View\View
      */
     public function index() {
         return view('client.home.index');

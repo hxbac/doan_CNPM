@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    /**
+     * Show product in cart for user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $cart = Cart::select('products.*', 'carts.quantity')
             ->join('products', 'products.id', 'carts.productID')
@@ -21,6 +26,12 @@ class CartController extends Controller
         ]);
     }
 
+    /**
+     * Handle add product to cart
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function add(Request $request) {
         $productID = $request->productID;
         $quantity = $request->quantity;
@@ -39,6 +50,12 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
+    /**
+     * Handle remove product in cart
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function remove($productID) {
         Cart::where('userID', Auth::id())->where('productID', $productID)->delete();
         return redirect()->route('cart.index');

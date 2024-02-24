@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+    /**
+     * Show list menu
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         $menus = Menu::get();
@@ -16,11 +21,22 @@ class MenuController extends Controller
         ]);
     }
 
+    /**
+     * Show form create menu
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function create()
     {
         return view("admin.menu.create");
     }
 
+    /**
+     * Handle create menu
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         Menu::create([
@@ -31,6 +47,12 @@ class MenuController extends Controller
         return redirect()->route('admin.menu.index');
     }
 
+    /**
+     * Show form edit menu
+     *
+     * @param integer $id menu
+     * @return \Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         $menu = Menu::findOrFail($id);
@@ -39,6 +61,12 @@ class MenuController extends Controller
         ]);
     }
 
+    /**
+     * Handle update menu
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $menu = Menu::findOrFail($request->id);
@@ -51,6 +79,12 @@ class MenuController extends Controller
         return redirect()->route('admin.menu.index');
     }
 
+    /**
+     * Handle delete menu
+     *
+     * @param integer $id menu
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function delete($id)
     {
         $menu = Menu::findOrFail($id);

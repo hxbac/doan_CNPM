@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    /**
+     * Show list user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $users = User::get();
         return view('admin.user.index', [
@@ -17,10 +22,21 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Show form create user
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function create() {
         return view('admin.user.create');
     }
 
+    /**
+     * Handle create user
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request) {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -47,6 +63,12 @@ class UserController extends Controller
         return redirect()->route('admin.user.index');
     }
 
+    /**
+     * Show form edit user
+     *
+     * @param integer $id user
+     * @return \Illuminate\Contracts\View\View
+     */
     public function edit($id) {
         $user = User::findOrFail($id);
         return view('admin.user.edit', [
@@ -54,6 +76,12 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Handle update user
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request) {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -80,6 +108,12 @@ class UserController extends Controller
         return redirect()->route('admin.user.index');
     }
 
+    /**
+     * Handle delete user
+     *
+     * @param integer $id user
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function delete($id) {
         $user = User::findOrFail($id);
         $user->delete();

@@ -29,6 +29,9 @@
                             <p class="mb-3">
                                 <b>Ghi chú:</b> {{ $order->note }}
                             </p>
+                            <p class="mb-3">
+                                <b>Thông báo:</b> {{ $order->message }}
+                            </p>
                         </div>
                         <div class="d-flex justify-content-center">
                             @switch($order->status)

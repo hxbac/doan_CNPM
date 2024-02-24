@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * Show list product
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index ()
     {
         $products = Product::select('products.*', 'categories.name as category_name')
@@ -18,6 +23,11 @@ class ProductController extends Controller
         [ "listProduct" => $products]);
     }
 
+    /**
+     * Show form create product
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function create ()
     {
         $categories = Category::get();
@@ -26,6 +36,12 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * Handle create product
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function store (Request $request)
     {
         $imgPath = $this->uploadFile($request->file('image'), 'product');
@@ -46,6 +62,12 @@ class ProductController extends Controller
         return redirect()->route('admin.product.index');
     }
 
+    /**
+     * Show form edit product
+     *
+     * @param integer $id product
+     * @return \Illuminate\Contracts\View\View
+     */
     public function edit($id)
     {
         $categories = Category::get();
@@ -56,6 +78,12 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * Handle update product
+     *
+     * @param Request $request
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $product = Product::findOrFail($request->id);
@@ -76,6 +104,12 @@ class ProductController extends Controller
         return redirect()->route('admin.product.index');
     }
 
+    /**
+     * Handle delete post
+     *
+     * @param integer $id post
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
     public function delete($id)
     {
         $product = Product::findOrFail($id);
